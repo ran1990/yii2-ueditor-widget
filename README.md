@@ -11,7 +11,7 @@ $ php composer.phar require kucha/ueditor "*"
 or add
 
 ```
-"kucha/ueditor": "*"
+"life2016/ueditor": "*"
 ```
 
 to the ```require``` section of your `composer.json` file.
