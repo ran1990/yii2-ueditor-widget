@@ -242,6 +242,14 @@ return [
         ".txt",
         ".md",
         ".xml"
-    ]
+    ],
     /* 列出的文件类型 */
+        /* 上传音频配置项 */
+    "audioActionName" => "uploadaudio", /* 执行上传音频的action名称 */
+    "audioFieldName" => "file", /* 提交的音频表单名称 */
+    "audioMaxSize" => 20971520, /* 上传大小限制，单位B */
+    "audioAllowFiles" => [".mp3", ".wma", ".wav", ".amr"], /* 上传音频格式限制 */
+    "audioUrlPrefix" => \Yii::getAlias("@static"), /* 音频访问路径前缀 */
+    "audioPathFormat" => "/upload/audio/{yyyy}{mm}/{time}{rand:6}",
+    "audioRoot" => \Yii::getAlias("@staticroot"),
 ];

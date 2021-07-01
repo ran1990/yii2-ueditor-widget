@@ -64,7 +64,7 @@ class Uploader
      */
     private function upFile()
     {
-        $file = $this->file = $_FILES[$this->fileField];
+        $file = $this->file = $_FILES[$this->fileField] ?? null;
         if (!$file) {
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_NOT_FOUND");
             return;

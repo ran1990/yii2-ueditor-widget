@@ -49,9 +49,10 @@ class UEditorAction extends Action
             case 'uploadvideo':
                 /* 上传文件 */
             case 'uploadfile':
+            /* 上传音频 */
+            case 'uploadaudio':
                 $result = $this->actionUpload();
                 break;
-
             /* 列出图片 */
             case 'listimage':
                 /* 列出文件 */
@@ -74,13 +75,16 @@ class UEditorAction extends Action
         if (isset($_GET["callback"])) {
             if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
                 echo htmlspecialchars($_GET["callback"]) . '(' . $result . ')';
+                die;
             } else {
                 echo json_encode([
                     'state' => 'callback参数不合法'
                 ]);
+                die;
             }
         } else {
             echo $result;
+            die;
         }
     }
 
@@ -120,6 +124,15 @@ class UEditorAction extends Action
                     "allowFiles" => $this->config['videoAllowFiles']
                 ];
                 $fieldName = $this->config['videoFieldName'];
+                break;
+            case 'uploadaudio':
+                $config = [
+                    "pathRoot"   => ArrayHelper::getValue($this->config, "audioRoot", $_SERVER['DOCUMENT_ROOT']),
+                    "pathFormat" => $this->config['audioPathFormat'],
+                    "maxSize"    => $this->config['audioMaxSize'],
+                    "allowFiles" => $this->config['audioAllowFiles']
+                ];
+                $fieldName = $this->config['audioFieldName'];
                 break;
             case 'uploadfile':
             default:
