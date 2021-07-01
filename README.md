@@ -5,7 +5,7 @@
 Either run
 
 ```
-$ php composer.phar require kucha/ueditor "*"
+$ php composer.phar require life2016/ueditor "*"
 ```
 
 or add
